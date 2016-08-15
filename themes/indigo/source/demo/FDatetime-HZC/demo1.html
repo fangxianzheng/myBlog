@@ -76,11 +76,40 @@
 <script>
 
 
+    $('#fd-time').show();
+    var thatH = $('#fd-time').height();
+    var o = new FDatetime({
+        startTime:'2016/1/19 8:20:00',
+        endTime:'2017/01/3',
+        scrollEnd:function(date, dateZh){
+
+        },
+        onSelected:function(date, dateZh){
+            console.log( date)
+            console.log( dateZh)
+            $('#dateTime').val(dateZh)
+            anime({
+                targets:'#fd-time',
+                translateY: [thatH],
+                easing:'easeInSine',
+                duration:200
+            })
+        },
+        onCancel: function(date, dateZh){
+            anime({
+                targets:'#fd-time',
+                translateY: [thatH],
+                easing:'easeInSine',
+                duration:200
+            })
+        }
+    });
+    $('#fd-time').hide();
 
 
     $('#input-line').on('click',function(e){
+
         $('#fd-time').show();
-        var thatH = $('#fd-time').height();
         anime({
             targets:'#fd-time',
             translateY: [thatH, 0],
@@ -89,32 +118,7 @@
         })
 
 
-        var o = new FDatetime({
-            startTime:'2016/1/19 8:20:00',
-            endTime:'2017/01/3',
-            scrollEnd:function(date, dateZh){
 
-            },
-            onSelected:function(date, dateZh){
-                console.log( date)
-                console.log( dateZh)
-                $('#dateTime').val(dateZh)
-                anime({
-                    targets:'#fd-time',
-                    translateY: [thatH],
-                    easing:'easeInSine',
-                    duration:200
-                })
-            },
-            onCancel: function(date, dateZh){
-                anime({
-                    targets:'#fd-time',
-                    translateY: [thatH],
-                    easing:'easeInSine',
-                    duration:200
-                })
-            }
-        });
     })
 </script>
 </body>
