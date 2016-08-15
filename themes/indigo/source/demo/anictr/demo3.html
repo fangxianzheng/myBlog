@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="animate.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title></title>
+</head>
+<body>
+<input type="text" id="open" value="点击我" readonly />
+
+<div id="test6" style="display:none"></div>
+<div id="test7" style="display:none">内容内容内容内容内容内容内容内容内容容内容内容内容内容内容内容内容内容容内容内容内容内容内容内容内容内容容内容内容内容内容内容内容内容内容容内容内容内容内容内容内容内容内容容内容内容内容内容内容内容内容内容<span id="close">关闭</span></div>
+<script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 18.75 + 'px';
+</script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script src="anictr.js"></script>
+<script>
+    $('#open').on('click',function(){
+
+        anictr({
+            ele:'#test6',
+            ani:'fadeIn',
+            dur:'400',
+            before:function(obj){
+                var el = document.querySelector(obj.ele);
+                el.style.display = 'block'
+            }
+        }).go().then(
+                anictr({
+                    ele:'#test7',
+                    ani:'slideInUp',
+                    dur:'400',
+                    before:function(obj){
+                        var el = document.querySelector(obj.ele);
+                        el.style.display = 'block'
+                    }
+                }),400
+        )
+    });
+
+    $('#close,#test6').on('click',function(){
+
+        anictr({
+            ele:'#test7',
+            ani:'slideOutDown',
+            dur:'400',
+            after:function(obj){
+                var el = document.querySelector(obj.ele);
+                el.style.display = 'none'
+            }
+        }).go().then(
+                anictr({
+                    ele:'#test6',
+                    ani:'fadeOut',
+                    dur:'400',
+                    after:function(obj){
+                        var el = document.querySelector(obj.ele);
+                        el.style.display = 'none'
+                    }
+                }),400
+        )
+    })
+</script>
+</body>
+</html>
